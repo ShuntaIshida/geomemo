@@ -1,0 +1,97 @@
+# GeoMemo
+
+**GeoMemo** は、地図上の任意の地点にメモを記録し、複数人でリアルタイムに共有・編集できるフィールドワーク向けのWebアプリケーションです。
+
+現地調査やまち歩き、地域研究などにおいて、場所と結びついた気づきや情報を参加者間で共有することを目的としています。
+
+## Features
+
+- **地図上へのメモの記録** — 地図をクリック・タップして、任意の地点にメモを追加できます。
+- **リアルタイム共同編集** — 参加者が追加・編集・削除したメモを、他の参加者と共有できます。
+- **地域別のメモ管理** — 地域ごとに固有のURLを設け、フィールドワークの記録を分けて管理できます。
+- **アカウント登録不要** — Firebaseの匿名認証を利用し、参加者は個別のアカウントを作成せずに利用できます。
+- **位置情報の記録** — 各メモに緯度・経度を保存し、地図上の地点と情報を関連づけます。
+- **航空写真表示** — Google Mapsの航空写真を利用して、地形や建物などの空間情報を参照できます。
+
+
+### メモの作成
+
+1. 地図上の任意の地点をクリックまたはタップします。
+2. タイトルとメモの内容を入力します。
+3. 保存すると、指定した位置にピンが表示されます。
+
+### メモの編集・削除
+
+地図上のピンを選択すると、メモの内容と記録位置の緯度・経度を確認できます。
+
+すべての参加者が、他の参加者のメモを含めて編集・削除できます。
+
+## Technology
+
+| 用途 | 技術 |
+|---|---|
+| フロントエンド | JavaScript / Vite |
+| 地図表示 | Google Maps JavaScript API |
+| データベース | Firebase Cloud Firestore |
+| ユーザー認証 | Firebase Authentication（匿名認証） |
+| ホスティング | GitHub Pages |
+| バージョン管理 | Git / GitHub |
+
+## Architecture
+
+GeoMemoは、Google MapsとFirebaseを組み合わせたWebアプリケーションです。
+
+- **Google Maps** — 地図の表示とメモの位置指定
+- **Cloud Firestore** — 地域情報と位置情報付きメモの保存・共有
+- **Firebase Authentication** — 匿名ユーザーの認証
+- **GitHub Pages** — Webアプリケーションの公開
+
+地域ごとにFirestoreのデータを分けて管理し、同じ地域のURLにアクセスした参加者が共通のメモを参照できる構成です。
+
+## Permissions
+
+GeoMemoでは、参加者間の共同編集を優先し、以下の権限設計を採用しています。
+
+- メモの閲覧：すべての参加者
+- メモの追加：認証済みの匿名ユーザー
+- メモの編集・削除：認証済みの匿名ユーザー（作成者による制限なし）
+- 地域の追加・管理：管理者
+
+**注意：** 他の参加者が作成したメモも編集・削除できるため、信頼できる参加者とのフィールドワークでの利用を想定しています。匿名認証は参加者の本人確認を保証するものではありません。
+
+## Development
+
+### Requirements
+
+- Node.js
+- npm
+- Firebaseプロジェクト
+- Google Maps JavaScript APIキー
+
+### Setup
+
+リポジトリをクローンします。
+
+```bash
+git clone https://github.com/shuntaishida/geomemo.git
+cd geomemo
+npm install
+```
+
+`.env.example` を参考に `.env` ファイルを作成し、FirebaseとGoogle Mapsの設定値を入力します。
+
+```bash
+npm run dev
+```
+
+ローカル開発サーバーを起動後、表示されたURLにアクセスしてください。
+
+APIキーは利用するAPIとHTTPリファラーを適切に制限してください。秘密鍵やサービスアカウントの認証情報はGitHubにコミットしないでください。
+
+## License
+
+ライセンス未設定。
+
+---
+
+GeoMemo — A collaborative geospatial note-taking application for fieldwork.
