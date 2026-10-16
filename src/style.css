@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 html, body, #app { margin: 0; height: 100%; font-family: system-ui, -apple-system, "Hiragino Sans", sans-serif; }
 #map { position: absolute; inset: 0; }
-.titlebar { position: absolute; top: 10px; left: 10px; background: #fff; padding: 6px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.3); font-weight: 600; max-width: 50vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titlebar { margin: 10px 10px 8px; background: #fff; padding: 6px 12px; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.3); font-weight: 600; max-width: calc(100vw - 80px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .fab { position: absolute; right: 10px; bottom: calc(110px + env(safe-area-inset-bottom)); width: 44px; height: 44px; border: 0; border-radius: 50%; background: #fff; color: #555; box-shadow: 0 1px 4px rgba(0,0,0,.4); cursor: pointer; display: grid; place-items: center; }
 .fab:hover { color: #1a73e8; }
 .fullscreen-msg { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
